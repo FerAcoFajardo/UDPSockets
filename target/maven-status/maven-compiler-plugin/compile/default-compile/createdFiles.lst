@@ -1,0 +1,7 @@
+com\distribuidos\dominio\Persona.class
+com\distribuidos\client\FrameCliente.class
+com\distribuidos\client\FrameCliente$1.class
+com\distribuidos\client\Cliente.class
+com\distribuidos\client\FrameCliente$2.class
+com\distribuidos\server\Servidor.class
+.netbeans_automatic_build
