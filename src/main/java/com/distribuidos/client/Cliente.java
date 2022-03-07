@@ -8,7 +8,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.distribuidos.dominio.Persona;
+import com.distribuidos.dominio.Person;
 import com.google.gson.Gson;
 
 /*
@@ -29,7 +29,7 @@ public class Cliente {
 //    public static void main(String[] args) throws IOException {
 //    }
 //
-//    public String hacerSolicitud(Persona persona) throws IOException{
+//    public String hacerSolicitud(Person persona) throws IOException{
 //        
 //    }
     

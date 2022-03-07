@@ -5,7 +5,7 @@
  */
 package com.distribuidos.client;
 
-import com.distribuidos.dominio.Persona;
+import com.distribuidos.dominio.Person;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import java.io.IOException;
@@ -163,7 +163,7 @@ public class FrameCliente extends javax.swing.JFrame {
         int height = Integer.parseInt(this.txtHeight.getText());
         float weight = Float.parseFloat(this.txtWeight.getText());  
 
-        Persona persona = new Persona();
+        Person persona = new Person();
 
         persona.setHeight(height);
         persona.setName(name);
@@ -200,7 +200,7 @@ public class FrameCliente extends javax.swing.JFrame {
 
             JsonReader reader = new JsonReader(new StringReader(message2));
             reader.setLenient(true);
-            Persona persona1 = gson.fromJson(reader, Persona.class);
+            Person persona1 = gson.fromJson(reader, Person.class);
 
 
             if(persona1 != null){

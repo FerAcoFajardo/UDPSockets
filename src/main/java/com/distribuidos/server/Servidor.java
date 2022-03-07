@@ -1,7 +1,7 @@
 package com.distribuidos.server;
 
 
-import com.distribuidos.dominio.Persona;
+import com.distribuidos.dominio.Person;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class Servidor {
                 JsonReader reader = new JsonReader(new StringReader(message));
                 reader.setLenient(true);
 
-                Persona persona = gson.fromJson(reader, Persona.class);
+                Person persona = gson.fromJson(reader, Person.class);
 
                 persona.calculateBMI();
 

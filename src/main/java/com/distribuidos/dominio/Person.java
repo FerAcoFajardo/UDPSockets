@@ -11,17 +11,17 @@ import java.lang.Math;
  *
  * @author mavel
  */
-public class Persona {
+public class Person {
     
     private String name;
     private float weight;
     private float height;
     private String bmi;
 
-    public Persona() {
+    public Person() {
     }
 
-    public Persona(String name, float weight, float height) {
+    public Person(String name, float weight, float height) {
         this.name = name;
         this.weight = weight;
         this.height = height;
