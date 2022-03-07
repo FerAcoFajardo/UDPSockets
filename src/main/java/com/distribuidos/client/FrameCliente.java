@@ -7,7 +7,9 @@ package com.distribuidos.client;
 
 import com.distribuidos.dominio.Persona;
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -58,9 +60,9 @@ public class FrameCliente extends javax.swing.JFrame {
 
         lbName.setText("Name");
 
-        lbWight.setText("Weight");
+        lbWight.setText("Weight (kg)");
 
-        lbHeight.setText("Height");
+        lbHeight.setText("Height (mt)");
 
         lbAnswer.setText("Answer");
 
@@ -103,7 +105,7 @@ public class FrameCliente extends javax.swing.JFrame {
                                 .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbAnswer)
-                        .addGap(0, 201, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,6 +181,7 @@ public class FrameCliente extends javax.swing.JFrame {
             System.out.println("iniciando cliente");
             DatagramSocket udpSocket = new DatagramSocket();
 //            String message = "hola, soy el cliente";
+            buffer = null;
             buffer = message.getBytes();
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length, direccion, PUERTO);
             
@@ -188,10 +191,18 @@ public class FrameCliente extends javax.swing.JFrame {
             
             udpSocket.receive(resp);
             
+
+
+
             String message2 = new String(resp.getData());
 
-            if(message2 != null){
-                this.atxAnswer.setText(message2);
+            JsonReader reader = new JsonReader(new StringReader(message2));
+            reader.setLenient(true);
+            Persona persona1 = gson.fromJson(reader, Persona.class);
+
+
+            if(persona1 != null){
+                this.atxAnswer.setText(persona1.getBmi());
             }
 
             System.out.println(message2);

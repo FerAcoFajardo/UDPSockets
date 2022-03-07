@@ -60,7 +60,7 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="lbAnswer" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="201" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lbName" min="-2" max="-2" attributes="0"/>
@@ -117,12 +117,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lbWight">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Weight"/>
+            <Property name="text" type="java.lang.String" value="Weight (kg)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbHeight">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Height"/>
+            <Property name="text" type="java.lang.String" value="Height (mt)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbAnswer">

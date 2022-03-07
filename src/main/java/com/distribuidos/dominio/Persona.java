@@ -13,9 +13,10 @@ import java.lang.Math;
  */
 public class Persona {
     
-    String name;
-    float weight;
-    float height;
+    private String name;
+    private float weight;
+    private float height;
+    private String bmi;
 
     public Persona() {
     }
@@ -25,6 +26,15 @@ public class Persona {
         this.weight = weight;
         this.height = height;
     }
+
+    public String getBmi() {
+        return bmi;
+    }
+
+    public void setBmi(String bmi) {
+        this.bmi = bmi;
+    }
+
 
     public String getName() {
         return name;
@@ -50,10 +60,22 @@ public class Persona {
         this.height = height;
     }
     
-    public float getBMI(){
+    /**
+    * Calculate the bmi
+    */
+    public void calculateBMI(){
         float weight = this.weight;
-        float height = this.height/100; 
-        return (float) (weight/Math.pow(height, 2));
+        float height = this.height; 
+        float bmi = (float) (weight/Math.pow(height, 2));
+        if (bmi <= 18.5 ){
+            this.bmi = "Thin";
+        }else if (bmi >= 18.6 && bmi>= 24.9){
+            this.bmi = "Healthy";
+        }else if(bmi >= 25 && bmi>=29.9){
+            this.bmi = "Overweight";
+        }else if(bmi >= 30){
+            this.bmi = "Obese";
+        }
     }
     
     

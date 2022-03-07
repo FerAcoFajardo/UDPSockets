@@ -39,6 +39,7 @@ public class Servidor {
             while(true){
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 udpSocket.receive(packet);
+                buffer = new byte[2200];
 
                 String message = new String(packet.getData());
 
@@ -48,23 +49,13 @@ public class Servidor {
 
                 Persona persona = gson.fromJson(reader, Persona.class);
 
-                float bmi = persona.getBMI();
+                persona.calculateBMI();
 
-                String meaning = "";
-                if (bmi <= 18.5 ){
-                    meaning = "Thin";
-                }else if (bmi >= 18.6 && bmi>= 24.9){
-                    meaning = "Healthy";
-                }else if(bmi >= 25 && bmi>=29.9){
-                    meaning = "Overweight";
-                }else if(bmi >= 30){
-                    meaning = "Obese";
-                }
-                
-                String respuesta = gson.toJson(meaning);
+                String respuesta = gson.toJson(persona);
 
                 int puertoCliente = packet.getPort();
                 InetAddress direccion = packet.getAddress();
+                buffer = null;
                 buffer = respuesta.getBytes();
                 DatagramPacket answer = new DatagramPacket(buffer, buffer.length, direccion, puertoCliente);
 
