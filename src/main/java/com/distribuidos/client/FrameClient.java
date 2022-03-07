@@ -23,13 +23,13 @@ import javax.swing.JFrame;
  *
  * @author mavel
  */
-public class FrameCliente extends javax.swing.JFrame {
+public class FrameClient extends javax.swing.JFrame {
 
-    Cliente cliente;
+    Client cliente;
     
-    public FrameCliente() {
+    public FrameClient() {
         initComponents();
-        cliente = new Cliente();
+        cliente = new Client();
         setResizable(false);
     }
 
@@ -213,11 +213,11 @@ public class FrameCliente extends javax.swing.JFrame {
 
 
         } catch (SocketException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnknownHostException ex) {
-            Logger.getLogger(FrameCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrameClient.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(FrameCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FrameClient.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnSendActionPerformed
@@ -236,7 +236,7 @@ public class FrameCliente extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameCliente().setVisible(true);
+                new FrameClient().setVisible(true);
             }
         });
         

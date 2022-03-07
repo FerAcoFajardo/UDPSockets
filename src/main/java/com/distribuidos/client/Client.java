@@ -21,7 +21,7 @@ import com.google.gson.Gson;
  *
  * @author mavel
  */
-public class Cliente {
+public class Client {
 
 //    /**
 //     * @param args the command line arguments

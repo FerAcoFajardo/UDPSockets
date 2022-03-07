@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author mavel
  */
-public class Servidor {
+public class Server {
 
     /**
      * @param args the command line arguments
@@ -64,9 +64,9 @@ public class Servidor {
                 udpSocket.send(answer);
             }
         } catch (SocketException ex) {
-            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
