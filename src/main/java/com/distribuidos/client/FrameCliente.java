@@ -62,7 +62,7 @@ public class FrameCliente extends javax.swing.JFrame {
 
         lbWight.setText("Weight (kg)");
 
-        lbHeight.setText("Height (mt)");
+        lbHeight.setText("Height (cm)");
 
         lbAnswer.setText("Answer");
 
@@ -159,42 +159,44 @@ public class FrameCliente extends javax.swing.JFrame {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         
-    String name = this.txtName.getText();
-    float height = Float.parseFloat(this.txtHeight.getText());
-    float weight = Float.parseFloat(this.txtWeight.getText());  
-    
-    Persona persona = new Persona();
+        String name = this.txtName.getText();
+        int height = Integer.parseInt(this.txtHeight.getText());
+        float weight = Float.parseFloat(this.txtWeight.getText());  
 
-    persona.setHeight(height);
-    persona.setName(name);
-    persona.setWeight(weight);
-    
-    final int PUERTO = 3000;
-        byte buffer[] = new byte[2200];
+        Persona persona = new Persona();
+
+        persona.setHeight(height);
+        persona.setName(name);
+        persona.setWeight(weight);
+
+        final int PUERTO = 3000;
+        byte buffer[] = null;
         Gson gson = new Gson();
-        
+
 
         String message = gson.toJson(persona);
-        System.out.println(message);
+//        System.out.println(message);
         try {
             InetAddress direccion = InetAddress.getByName("localhost");
             System.out.println("iniciando cliente");
             DatagramSocket udpSocket = new DatagramSocket();
-//            String message = "hola, soy el cliente";
-            buffer = null;
+    //            String message = "hola, soy el cliente";
             buffer = message.getBytes();
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length, direccion, PUERTO);
-            
+
             udpSocket.send(packet);
-            
+
+
+            buffer = new byte[99999];
             DatagramPacket resp = new DatagramPacket(buffer, buffer.length);
-            
+
             udpSocket.receive(resp);
-            
+
 
 
 
             String message2 = new String(resp.getData());
+//            System.out.println("La respuesta es:"+message2);
 
             JsonReader reader = new JsonReader(new StringReader(message2));
             reader.setLenient(true);
@@ -205,11 +207,11 @@ public class FrameCliente extends javax.swing.JFrame {
                 this.atxAnswer.setText(persona1.getBmi());
             }
 
-            System.out.println(message2);
-            
+//            System.out.println(message2);
+
             udpSocket.close();
-            
-            
+
+
         } catch (SocketException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnknownHostException ex) {

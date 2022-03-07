@@ -29,7 +29,7 @@ public class Servidor {
      */
     public static void main(String[] args) {
         final int PUERTO = 3000;
-        byte buffer[] = new byte[2200];
+        byte buffer[] = new byte[65535];
 
         try(DatagramSocket udpSocket = new DatagramSocket(PUERTO)){
             Gson gson = new Gson();
@@ -39,11 +39,12 @@ public class Servidor {
             while(true){
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
                 udpSocket.receive(packet);
-                buffer = new byte[2200];
 
                 String message = new String(packet.getData());
 
-                System.out.println(message);
+//                buffer = message.getBytes();
+
+//                System.out.println(message);
                 JsonReader reader = new JsonReader(new StringReader(message));
                 reader.setLenient(true);
 
@@ -55,6 +56,7 @@ public class Servidor {
 
                 int puertoCliente = packet.getPort();
                 InetAddress direccion = packet.getAddress();
+//                System.out.println(respuesta);
                 buffer = null;
                 buffer = respuesta.getBytes();
                 DatagramPacket answer = new DatagramPacket(buffer, buffer.length, direccion, puertoCliente);
